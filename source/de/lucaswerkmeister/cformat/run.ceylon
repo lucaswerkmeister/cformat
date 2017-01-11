@@ -1,4 +1,3 @@
-
 import ceylon.collection {
     ArrayList,
     MutableList
@@ -58,10 +57,17 @@ shared void run() {
                 }
                 i++;
             }
+            String stringifyOption(Object option) {
+                if (is {String*} option) {
+                    return " ".join(option.map(stringifyOption));
+                } else {
+                    return option.string;
+                }
+            }
             for (option in `SparseFormattingOptions`.getDeclaredAttributes<SparseFormattingOptions>(`SharedAnnotation`, `DefaultAnnotation`)) {
                 if (exists val = option.bind(formattingOptions).get()) {
                     patchedArguments.add("--" + option.declaration.name);
-                    patchedArguments.add(val.string);
+                    patchedArguments.add(stringifyOption(val));
                 }
             }
             return patchedArguments.sequence();
