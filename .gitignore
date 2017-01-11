@@ -1,6 +1,7 @@
 # build
 /modules/
 /*.jar
+/cformat
 
 # backup files
 *~
