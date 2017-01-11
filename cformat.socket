@@ -1,0 +1,8 @@
+[Unit]
+Description=Ceylon source code formatter socket
+
+[Socket]
+ListenStream=%t/cformat
+
+[Install]
+WantedBy=sockets.target
