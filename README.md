@@ -12,8 +12,7 @@ Installation
 ```sh
 make install # install to home directory
 systemctl --user daemon-reload # make user manager see cformat.{service,socket} units
-systemctl --user enable cformat.socket # automatically start daemon
-systemctl --user start cformat.socket # start daemon
+systemctl --user enable --now cformat.socket # start daemon
 ```
 
 The `cformat` binary will be installed in `$(systemd-path user-binaries)`,
@@ -22,8 +21,7 @@ Ensure that this directory is contained in your `PATH`.
 
 To uninstall, run the reverse commands:
 ```sh
-systemctl --user stop cformat.service cformat.socket
-systemctl --user disable cformat.socket
+systemctl --user disable --now cformat.service cformat.socket
 make uninstall
 systemctl --user daemon-reload
 ```
