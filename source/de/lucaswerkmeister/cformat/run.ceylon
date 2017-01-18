@@ -24,6 +24,12 @@ shared void run() {
         fd = 0;
         String[] argumentsMap(String[] arguments, String? workingDirectory) {
             assert (exists workingDirectory);
+            if (arguments.any((argument) => argument.startsWith("--help")) || "--version" in arguments) {
+                // commandLineOptions will print something and exit –
+                // printing and exiting aren’t trapped yet, so return immediately
+                // (in this case, we don’t need to adjust paths anyways)
+                return arguments;
+            }
             value [formattingOptions, remainingArguments] = commandLineOptions(arguments);
             "[[remainingArguments]] with [[workingDirectory]] prepended to the path arguments,
              as well as [[formattingOptions]] in string format."
