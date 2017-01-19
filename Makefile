@@ -2,7 +2,7 @@ CLIENT := cformat
 LENGTH_SIZE := 2 # default value of makePacketBasedInstance
 TYPE_SIZE := 1 # default value of makePacketBasedInstance
 
-CFLAGS += -Wall
+CFLAGS += -Wall -std=c99
 
 MODULE := de.lucaswerkmeister.cformat
 VERSION := 1.3.1
